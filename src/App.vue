@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>{{ users }}</p>
   </div>
 </template>
 
@@ -12,6 +13,14 @@ export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  data () {
+    return {
+      users: ''
+    }
+  },
+  async mounted () {
+    this.users = await window.fetch('/api/user').then(res => res.json())
   }
 }
 </script>

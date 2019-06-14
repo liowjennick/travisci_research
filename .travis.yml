@@ -1,0 +1,8 @@
+sudo: required
+services:
+  docker
+
+script:
+  - docker build -t liowjennick/curl .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push liowjennick/curl
